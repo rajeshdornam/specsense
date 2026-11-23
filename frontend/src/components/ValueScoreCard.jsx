@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Cpu, Battery, Eye, Camera, DollarSign, Info } from 'lucide-react';
 
 const METRIC_ICONS = {
@@ -22,7 +22,7 @@ export default function ValueScoreCard({ vfmData }) {
   } = vfmData;
 
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded p-4 sm:p-5 space-y-5">
+    <div className="bg-white border border-[#E2E8F0] rounded p-4 sm:p-5 space-y-5 anim-fade-up">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E2E8F0] pb-4">
         <div>
@@ -47,7 +47,7 @@ export default function ValueScoreCard({ vfmData }) {
             <span className="text-[10px] text-slate-400 block mt-0.5">Category-Weighted</span>
           </div>
           <div 
-            className="w-13 h-13 rounded flex items-center justify-center font-bold text-xl text-white shadow-2xs tabular-nums"
+            className="w-13 h-13 rounded flex items-center justify-center font-bold text-xl text-white shadow-2xs tabular-nums anim-scale-in num-reveal"
             style={{ backgroundColor: tierColor }}
           >
             {totalScore}
@@ -63,7 +63,7 @@ export default function ValueScoreCard({ vfmData }) {
         </h4>
 
         <div className="divide-y divide-slate-100">
-          {breakdown.map((item) => {
+          {breakdown.map((item, i) => {
             const Icon = METRIC_ICONS[item.metric] || Cpu;
             const barWidth = Math.min(100, Math.max(5, item.score));
 
@@ -77,16 +77,18 @@ export default function ValueScoreCard({ vfmData }) {
                       ({item.weightPct}% weight)
                     </span>
                   </div>
-                  <span className="font-bold text-slate-900 tabular-nums text-xs">{item.score} / 100</span>
+                  <span className="font-bold text-slate-900 tabular-nums text-xs num-reveal" style={{ animationDelay: `${i * 80}ms` }}>{item.score} / 100</span>
                 </div>
 
-                {/* Clean progress bar */}
+                {/* Animated progress bar */}
                 <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden mt-1">
                   <div
-                    className="h-full rounded-full"
+                    className="h-full rounded-full bar-animated"
                     style={{
+                      '--bar-width': `${barWidth}%`,
                       width: `${barWidth}%`,
-                      backgroundColor: item.score >= 80 ? '#15803D' : item.score >= 60 ? '#1D4ED8' : '#B45309'
+                      backgroundColor: item.score >= 80 ? '#15803D' : item.score >= 60 ? '#1D4ED8' : '#B45309',
+                      animationDelay: `${200 + i * 100}ms`
                     }}
                   />
                 </div>

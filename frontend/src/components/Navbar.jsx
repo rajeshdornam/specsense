@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   SlidersHorizontal, 
@@ -17,6 +17,13 @@ export default function Navbar() {
   const { triggeredCount, alerts } = useAlerts();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [notifDropdownOpen, setNotifDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -39,9 +46,9 @@ export default function Navbar() {
   const triggeredAlerts = alerts.filter(a => a.status === 'TRIGGERED');
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-[#E2E8F0]">
+    <header className={`sticky top-0 z-50 bg-white border-b border-[#E2E8F0] transition-shadow duration-200 ${scrolled ? 'shadow-md' : ''}`}>
       {/* Top Utility Bar with Clear Sample-Data Label */}
-      <div className="bg-[#0F172A] text-slate-300 text-[11px] py-1.5 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+      <div className="navbar-gradient text-slate-200 text-[11px] py-1.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1.5 text-slate-200 font-medium">
@@ -71,7 +78,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded bg-[#1D4ED8] flex items-center justify-center text-white font-bold text-sm shadow-xs">
+            <div className="w-8 h-8 rounded bg-[#1D4ED8] flex items-center justify-center text-white font-bold text-sm shadow-xs group-hover:scale-105 transition-transform duration-200">
               <TrendingUp className="w-4 h-4 text-white stroke-[2.5]" />
             </div>
             <div>
@@ -125,7 +132,7 @@ export default function Navbar() {
 
               {/* Notification Popover */}
               {notifDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-[#E2E8F0] rounded-md shadow-dropdown py-2 z-50 animate-in fade-in">
+                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-[#E2E8F0] rounded-md shadow-dropdown py-2 z-50 anim-scale-in">
                   <div className="px-4 py-2 border-b border-[#E2E8F0] flex items-center justify-between">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
                       Price Drop Alerts ({triggeredCount} Triggered)
@@ -175,7 +182,7 @@ export default function Navbar() {
             {/* Live Demo 1-Click Launch Button */}
             <Link
               to="/compare?ids=4,3"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-bold text-white bg-[#1D4ED8] hover:bg-[#1E40AF] transition-colors shadow-2xs"
+              className="btn-press inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-bold text-white bg-[#1D4ED8] hover:bg-[#1E40AF] transition-colors shadow-2xs"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
               <span>Demo: OnePlus 12 vs Pixel 8</span>
@@ -196,7 +203,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#E2E8F0] bg-white px-4 pt-2 pb-4 space-y-1 shadow-md">
+        <div className="lg:hidden border-t border-[#E2E8F0] bg-white px-4 pt-2 pb-4 space-y-1 shadow-md anim-fade-up">
           {navLinks.map((link) => {
             const active = isActive(link.path);
             return (

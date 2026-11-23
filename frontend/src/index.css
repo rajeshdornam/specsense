@@ -4,44 +4,380 @@
 
 @layer base {
   body {
-    @apply bg-[#F8FAFC] text-[#1E293B] font-sans antialiased;
+    @apply text-[#1E293B] font-sans antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
     letter-spacing: -0.011em;
+    background: #F0F4FF;
   }
 
-  /* Crisp table border rendering */
   table {
     border-collapse: separate;
     border-spacing: 0;
   }
 
-  /* Custom Clean Commerce Scrollbars */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #F1F5F9;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #CBD5E1;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #94A3B8;
-  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #EEF2FF; }
+  ::-webkit-scrollbar-thumb { background: #A5B4FC; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #818CF8; }
 }
 
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* =====================================================
+   SPECSENSE  –  NEXT-LEVEL ANIMATION SYSTEM  🚀
+   ===================================================== */
+
+/* ── 1. BACKGROUND ANIMATIONS ── */
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Print / PDF generation styles */
+@keyframes meshMove {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(30px,-20px) scale(1.05); }
+  66%  { transform: translate(-20px,30px) scale(0.97); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+@keyframes orbFloat {
+  0%,100% { transform: translateY(0) translateX(0) scale(1); }
+  25%      { transform: translateY(-18px) translateX(12px) scale(1.04); }
+  50%      { transform: translateY(-8px) translateX(-14px) scale(0.97); }
+  75%      { transform: translateY(-22px) translateX(6px) scale(1.02); }
+}
+
+@keyframes orbFloat2 {
+  0%,100% { transform: translateY(0) translateX(0) scale(1); }
+  30%      { transform: translateY(16px) translateX(-18px) scale(1.06); }
+  60%      { transform: translateY(-10px) translateX(20px) scale(0.95); }
+}
+
+@keyframes orbFloat3 {
+  0%,100% { transform: translateY(0) scale(1); }
+  40%      { transform: translateY(-25px) scale(1.08); }
+  80%      { transform: translateY(10px) scale(0.94); }
+}
+
+/* ── 2. TEXT ANIMATIONS ── */
+
+@keyframes gradientText {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes shimmerText {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── 3. ELEMENT ENTRY ANIMATIONS ── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.4); }
+  50%  { opacity: 1; transform: scale(1.1); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes flipIn {
+  from { opacity: 0; transform: rotateX(-60deg) translateY(20px); }
+  to   { opacity: 1; transform: rotateX(0) translateY(0); }
+}
+
+/* ── 4. CONTINUOUS / LOOP ANIMATIONS ── */
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulseDeal {
+  0%,100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.35); }
+  50%      { box-shadow: 0 0 0 8px rgba(21, 128, 61, 0); }
+}
+
+@keyframes pulseWarn {
+  0%,100% { box-shadow: 0 0 0 0 rgba(180, 83, 9, 0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(180, 83, 9, 0); }
+}
+
+@keyframes badgePop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes barGrow {
+  from { width: 0%; }
+  to   { width: var(--bar-width, 100%); }
+}
+
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+  50%      { box-shadow: 0 0 20px 4px rgba(99, 102, 241, 0.18); }
+}
+
+@keyframes borderSpin {
+  to { --angle: 360deg; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastSlideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes waveIn {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  60%  { opacity: 1; }
+  100% { transform: translateX(0); }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+  60%  { transform: scale(1.08) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes neonBorder {
+  0%,100% { border-color: #6366F1; box-shadow: 0 0 8px rgba(99,102,241,0.3); }
+  50%      { border-color: #2563EB; box-shadow: 0 0 16px rgba(37,99,235,0.5); }
+}
+
+/* ── 5. HERO BACKGROUND CLASSES ── */
+
+.hero-gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #2563EB 50%, #0EA5E9 75%, #10B981 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.hero-bg-mesh {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+}
+
+.orb-1 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #818CF8 0%, #6366F1 60%, transparent 100%);
+  top: -80px; left: -60px;
+  animation: orbFloat 7s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, #34D399 0%, #059669 60%, transparent 100%);
+  top: 20px; right: -50px;
+  animation: orbFloat2 9s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, #FBBF24 0%, #F59E0B 60%, transparent 100%);
+  bottom: -40px; left: 40%;
+  animation: orbFloat3 6s ease-in-out infinite;
+}
+
+.orb-4 {
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, #F472B6 0%, #EC4899 60%, transparent 100%);
+  bottom: 10px; right: 20%;
+  animation: orbFloat 11s ease-in-out infinite reverse;
+}
+
+/* ── 6. ANIMATED TEXT CLASSES ── */
+
+.gradient-text {
+  background: linear-gradient(90deg, #fff 0%, #BAE6FD 25%, #A5F3FC 50%, #BAE6FD 75%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerText 3s linear infinite;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #2563EB, #7C3AED, #EC4899, #2563EB);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientText 4s ease infinite;
+}
+
+/* ── 7. CTA & SECTION BACKGROUND CLASSES ── */
+
+.cta-gradient {
+  background: linear-gradient(135deg, #1E40AF 0%, #4F46E5 40%, #7C3AED 70%, #DB2777 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.section-gradient-soft {
+  background: linear-gradient(135deg, #EEF2FF 0%, #E0F2FE 50%, #F0FDF4 100%);
+}
+
+.navbar-gradient {
+  background: linear-gradient(90deg, #1E1B4B 0%, #1E3A8A 40%, #0C4A6E 70%, #064E3B 100%);
+  background-size: 200% 100%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* ── 8. ANIMATION UTILITY CLASSES ── */
+
+.anim-fade-up    { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in    { animation: fadeIn 0.4s ease both; }
+.anim-scale-in   { animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-bounce-in  { animation: bounceIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-flip-in    { animation: flipIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-wave-in    { animation: waveIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-pop-in     { animation: popIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-slide-right{ animation: slideInRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-slide-left { animation: slideInLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-float      { animation: float 3s ease-in-out infinite; }
+.anim-rotate     { animation: rotateSlow 8s linear infinite; }
+.num-reveal      { animation: countUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.toast-enter     { animation: toastSlideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bar-animated    { animation: barGrow 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-glow       { animation: glowPulse 2.5s ease-in-out infinite; }
+
+/* Stagger delays */
+.anim-delay-50  { animation-delay: 50ms; }
+.anim-delay-100 { animation-delay: 100ms; }
+.anim-delay-150 { animation-delay: 150ms; }
+.anim-delay-200 { animation-delay: 200ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+.anim-delay-400 { animation-delay: 400ms; }
+.anim-delay-500 { animation-delay: 500ms; }
+.anim-delay-600 { animation-delay: 600ms; }
+.anim-delay-700 { animation-delay: 700ms; }
+.anim-delay-800 { animation-delay: 800ms; }
+
+/* Recommendation badge animations */
+.badge-deal { animation: pulseDeal 2s ease-in-out infinite, badgePop 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+.badge-wait { animation: pulseWarn 2s ease-in-out infinite, badgePop 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+.badge-fair { animation: badgePop 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ── 9. CARD HOVER EFFECTS ── */
+
+.card-hover {
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.2s cubic-bezier(0.22,1,0.36,1),
+              border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px -6px rgba(99,102,241,0.18), 0 4px 10px -3px rgba(0,0,0,0.08);
+  border-color: #818CF8 !important;
+}
+
+.card-glow:hover {
+  animation: neonBorder 1.5s ease-in-out infinite;
+}
+
+/* ── 10. SCROLL REVEAL ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── 11. SHIMMER SKELETON ── */
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #E0E7FF 0px, #C7D2FE 40px, #E0E7FF 80px);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ── 12. BUTTON ── */
+.btn-press {
+  transition: transform 0.1s ease, filter 0.15s ease;
+}
+.btn-press:active { transform: scale(0.95); filter: brightness(0.9); }
+
+/* ── 13. PRINT / PDF ── */
 @media print {
-  .no-print {
-    display: none !important;
+  .no-print { display: none !important; }
+  body { background: white !important; }
+  .anim-fade-up, .anim-fade-in, .reveal, .hero-gradient-bg,
+  .cta-gradient, .gradient-text, .gradient-text-blue {
+    opacity: 1 !important; transform: none !important;
+    animation: none !important;
+    -webkit-text-fill-color: unset !important;
+    background: unset !important;
   }
-  body {
-    background: white !important;
+}
+
+/* ── 14. ACCESSIBILITY ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -24,7 +24,7 @@ export default function RecommendationBadge({ recommendation, badgeType, size = 
     : 'text-[11px] px-2.5 py-1 gap-1.5 font-semibold';
 
   return (
-    <span className={`inline-flex items-center rounded-sm border uppercase tracking-wider ${bg} ${sizeClasses}`}>
+    <span className={`inline-flex items-center rounded-sm border uppercase tracking-wider ${bg} ${sizeClasses} ${isDeal ? 'badge-deal' : isWait ? 'badge-wait' : 'badge-fair'}`}>
       <Icon className={size === 'sm' ? 'w-3 h-3' : size === 'lg' ? 'w-3.5 h-3.5' : 'w-3 h-3'} />
       <span>{label}</span>
     </span>

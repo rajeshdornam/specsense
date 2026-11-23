@@ -25,7 +25,7 @@ export default function ProductCard({
   const specSnippet = [processor?.split('(')[0]?.trim(), display?.split('(')[0]?.trim()].filter(Boolean).join(' • ');
 
   return (
-    <div className="group bg-white border border-[#E2E8F0] rounded-md p-4 flex flex-col justify-between hover:border-slate-400 hover:shadow-card transition-all duration-150">
+    <div className="group bg-white border border-[#E2E8F0] rounded-md p-4 flex flex-col justify-between card-hover hover:border-slate-400 reveal">
       <div>
         {/* Brand & Category Row */}
         <div className="flex items-center justify-between text-[11px] mb-2">
@@ -34,11 +34,11 @@ export default function ProductCard({
         </div>
 
         {/* Clean Product Photography Box */}
-        <div className="relative w-full h-44 my-2 flex items-center justify-center p-3 bg-white rounded border border-slate-100 group-hover:border-slate-200 transition-colors">
+        <div className="relative w-full h-44 my-2 flex items-center justify-center p-3 bg-white rounded border border-slate-100 group-hover:border-slate-200 transition-colors overflow-hidden">
           <img
             src={image_url}
             alt={name}
-            className="max-h-full max-w-full object-contain"
+            className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
           />
         </div>
@@ -93,7 +93,7 @@ export default function ProductCard({
           <button
             type="button"
             onClick={() => onQuickCompare && onQuickCompare(product)}
-            className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded text-xs font-semibold border transition-colors ${
+            className={`btn-press flex items-center justify-center gap-1.5 py-2 px-2 rounded text-xs font-semibold border transition-colors ${
               isCompared
                 ? 'bg-blue-50 text-[#1D4ED8] border-[#1D4ED8]'
                 : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50 hover:border-slate-400'

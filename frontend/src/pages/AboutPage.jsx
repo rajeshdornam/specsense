@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  TrendingUp, 
-  Database, 
-  ShieldCheck, 
-  Code2, 
-  FileCheck, 
-  Layers, 
+import {
+  TrendingUp,
+  Database,
+  ShieldCheck,
+  Code2,
+  FileCheck,
+  Layers,
   CheckCircle2
 } from 'lucide-react';
 

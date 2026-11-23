@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -20,7 +20,7 @@ function NotificationToast() {
   if (!latestNotification) return null;
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 bg-[#15803D] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-in fade-in slide-in-from-bottom-5 text-xs font-semibold">
+    <div className="fixed bottom-5 right-5 z-50 bg-[#15803D] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 toast-enter text-xs font-semibold">
       <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
       <span>{latestNotification}</span>
       <button 
@@ -38,7 +38,7 @@ function AppContent() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 anim-fade-up">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/compare" element={<ComparePage />} />
